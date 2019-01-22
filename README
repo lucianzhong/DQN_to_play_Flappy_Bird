@@ -34,5 +34,12 @@ end for
 
 
 
+DQN这篇文章的算法就是Q-learning+function approximation（只不过function approximation是比较特殊的），每一次根据所获得的来更新Q-value，
+本质就是stochastic gradient descent (SGD)。一般在用mini-batch SGD做优化时，都假设样本之间的相对独立，从而使得每个mini-batch内数据所含的噪声相互抵消，
+算法收敛的更快。在这个问题中，之所以加入experience replay是因为样本是从游戏中的连续帧获得的，这与简单的reinforcement learning问题（比如maze）相比，
+样本的关联性大了很多，如果没有experience replay，算法在连续一段时间内基本朝着同一个方向做gradient descent，那么同样的步长下这样直接计算gradient就有可能不收敛。
+因此experience replay是从一个memory pool中随机选取了一些expeirence，然后再求梯度，从而避免了这个问题。
+原文的实验中指出mini batch是32，而replay memory存了最近的1000000帧，可以看出解决关联性的问题在DQN里是个比较重要的技巧。
+
 Reference:
 https://github.com/yenchenlin/DeepLearningFlappyBird
