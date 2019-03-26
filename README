@@ -1,22 +1,22 @@
 Installation Dependencies:
---------
+
 Python 2.7 or 3   
 TensorFlow 0.7   
 pygame    
 OpenCV-Python    
 
 How to run?
------------
+
 run DQN_angent.py
 
 
 What is Deep Q-Network?     
------------------
+
 It is a convolutional neural network, trained with a variant of Q-learning, whose input is raw pixels and whose output is a value function estimating future rewards
 
 
-The pseudo-code for the DQN:     
---------------
+The pseudo-code for the DQN:    
+
 Initialize replay memory D to size N     
 Initialize action-value function Q with random weights        
 for episode = 1, M do          
@@ -44,5 +44,4 @@ DQN这篇文章的算法就是Q-learning+function approximation（只不过funct
 原文的实验中指出mini batch是32，而replay memory存了最近的1000000帧，可以看出解决关联性的问题在DQN里是个比较重要的技巧。
 
 Reference:
-----------
 https://github.com/yenchenlin/DeepLearningFlappyBird
